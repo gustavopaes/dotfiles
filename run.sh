@@ -7,7 +7,6 @@
 ##
 
 NODE_URL="http://nodejs.org/dist/v0.12.3/node-v0.12.3.tar.gz"
-
 SUBLIME_URL="http://c758482.r82.cf2.rackcdn.com/sublime-text_build-3083_amd64.deb"
 
 ## end
@@ -16,8 +15,10 @@ if [ "$(whoami)" != "root" ]; then
 	exit
 fi
 
+ORIG=`pwd`
+
 ## Update system
-echo "Updating system (apt-get)"
+echo "Updating system (apt-get upgrade)"
 apt-get -qq update
 apt-get -qq  -y upgrade
 
@@ -26,21 +27,21 @@ echo "Installing XFCE (xubuntu-desktop)"
 apt-get -y -qq install xubuntu-desktop
 
 ## Install c++
-echo "Installing c++"
-apt-get -qq -y install c++ binutils
+echo "Installing gcc, c++ (build-essential)"
+apt-get -qq -y install build-essential
 
 ## Install and configure GIT
 echo "Installing GIT"
 apt-get -qq -y install git
 
-echo -n "Set your name: "
-read GIT_NAME
+## Configure GIT
+cp dotfiles/.gitconfig $HOME/.gitconfig
 
-echo -n "Set your e-mail: "
-read GIT_EMAIL
+## Profile file
+cp dotfiles/.profile $HOME/.profile
 
-git config --global --replace-all user.name  $GIT_NAME
-git config --global --replace-all user.email $GIT_EMAIL
+## Bash file
+cp dotfiles/.bashrc $HOME/.bashrc
 
 ## SUBLIME JS
 SUBL=`whereis subl | grep subl$`
@@ -73,7 +74,20 @@ if test -z "$NODE"; then
 	exit
 fi
 
-echo "Done! Be happy."
+## GO LANG
+if [ ! -d "/usr/local/src/go/src" ]; then
+	mkdir "$HOME/gocode"
 
-## Check if golang is installed
+	cd /usr/local/src/
+	git clone https://go.googlesource.com/go
+	cd go
+	git checkout go1.4.1
+	cd src/
+	./all.bash
+fi
+
+cd $ORIG
+
+echo "All Ready. Reboot your system."
+
 exit 1
