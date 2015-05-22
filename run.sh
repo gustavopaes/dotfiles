@@ -43,6 +43,9 @@ cp dotfiles/.profile $HOME/.profile
 ## Bash file
 cp dotfiles/.bashrc $HOME/.bashrc
 
+## Default desktop
+cp dotfiles/.dmrc $HOME/.dmrc
+
 ## SUBLIME JS
 SUBL=`whereis subl | grep subl$`
 
