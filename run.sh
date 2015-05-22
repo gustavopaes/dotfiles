@@ -21,6 +21,10 @@ echo "Updating system (apt-get)"
 apt-get -qq update
 apt-get -qq  -y upgrade
 
+## Install XFCE
+echo "Installing XFCE (xubuntu-desktop)"
+apt-get -y -qq install xubuntu-desktop
+
 ## Install c++
 echo "Installing c++"
 apt-get -qq -y install c++ binutils
