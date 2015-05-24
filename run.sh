@@ -91,6 +91,9 @@ fi
 
 cd $ORIG
 
+## XFCE configuration
+cp -R dotfiles/xfce4/{desktop,panel,xfconf,xfwm4} $HOME/.config/xfce4/
+
 echo "All Ready. Reboot your system."
 
 exit 1
