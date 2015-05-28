@@ -22,10 +22,6 @@ echo "Updating system (apt-get upgrade)"
 apt-get -qq update
 apt-get -qq  -y upgrade
 
-## Install XFCE
-echo "Installing XFCE (xubuntu-desktop)"
-apt-get -y -qq install xubuntu-desktop
-
 ## Install c++
 echo "Installing gcc, c++ (build-essential)"
 apt-get -qq -y install build-essential
@@ -42,9 +38,6 @@ cp dotfiles/.profile $HOME/.profile
 
 ## Bash file
 cp dotfiles/.bashrc $HOME/.bashrc
-
-## Default desktop
-cp dotfiles/.dmrc $HOME/.dmrc
 
 ## SUBLIME JS
 SUBL=`whereis subl | grep subl$`
@@ -90,9 +83,6 @@ if [ ! -d "/usr/local/src/go/src" ]; then
 fi
 
 cd $ORIG
-
-## XFCE configuration
-cp -R dotfiles/xfce4/{desktop,panel,xfconf,xfwm4} $HOME/.config/xfce4/
 
 echo "All Ready. Reboot your system."
 
