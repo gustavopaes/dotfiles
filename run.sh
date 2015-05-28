@@ -30,17 +30,8 @@ apt-get -qq -y install build-essential
 echo "Installing GIT"
 apt-get -qq -y install git
 
-## Configure GIT
-cp dotfiles/.gitconfig $HOME/.gitconfig
-chown $USER:$USER $HOME/.gitconfig
-
-## Profile file
-cp dotfiles/.profile $HOME/.profile
-chown $USER:$USER $HOME/.profile
-
-## Bash file
-cp dotfiles/.bashrc $HOME/.bashrc
-chown $USER:$USER $HOME/.bashrc
+## Install VLC
+apt-get -qq -y install vlc
 
 ## SUBLIME JS
 SUBL=`whereis subl | grep subl$`
@@ -85,6 +76,26 @@ if [ ! -d "/usr/local/src/go/src" ]; then
 fi
 
 cd $ORIG
+
+
+## Configure GIT
+echo "Git config..."
+cp dotfiles/.gitconfig $HOME/.gitconfig
+chown $USER:$USER $HOME/.gitconfig
+
+## Profile file
+echo "Profile config..."
+cp dotfiles/.profile $HOME/.profile
+chown $USER:$USER $HOME/.profile
+
+## Bash file
+echo "Bash config..."
+cp dotfiles/.bashrc $HOME/.bashrc
+chown $USER:$USER $HOME/.bashrc
+
+## Sublime User preferences
+echo "Sublime user preferences..."
+cp dotfiles/Preferences.sublime-settings $HOME/.config/sublime-text-3/Packages
 
 echo "All Ready. Reboot your system."
 
