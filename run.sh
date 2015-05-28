@@ -8,7 +8,6 @@
 
 NODE_URL="http://nodejs.org/dist/v0.12.3/node-v0.12.3.tar.gz"
 SUBLIME_URL="http://c758482.r82.cf2.rackcdn.com/sublime-text_build-3083_amd64.deb"
-GOLANG_URL="https://storage.googleapis.com/golang/go1.4.2.src.tar.gz"
 
 ## end
 if [ "$(whoami)" != "root" ]; then
