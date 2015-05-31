@@ -31,7 +31,12 @@ echo "Installing GIT"
 apt-get -qq -y install git
 
 ## Install VLC
+echo "Installing VLC"
 apt-get -qq -y install vlc
+
+## Install Terminator
+echo "Installing Terminator"
+apt-get -qq -y install terminator
 
 ## SUBLIME JS
 SUBL=`whereis subl | grep subl$`
@@ -77,7 +82,6 @@ fi
 
 cd $ORIG
 
-
 ## Configure GIT
 echo "Git config..."
 cp dotfiles/.gitconfig $HOME/.gitconfig
@@ -92,6 +96,11 @@ chown $USER:$USER $HOME/.profile
 echo "Bash config..."
 cp dotfiles/.bashrc $HOME/.bashrc
 chown $USER:$USER $HOME/.bashrc
+
+## Terminator config
+echo "Terminator config..."
+cp -R dotfiles/terminator $HOME/.config/terminator
+chown $USER:$USER $HOME/.config/terminator
 
 ## Sublime User preferences
 echo "Sublime user preferences..."
